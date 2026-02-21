@@ -1,4 +1,4 @@
-import { addDoc, collection, deleteDoc, doc, getDocs, updateDoc } from 'firebase/firestore';
+import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, updateDoc } from 'firebase/firestore';
 import { db } from '@/firebase/config';
 
 export const createDocument = async <T extends object>(collectionName: string, payload: T) =>
@@ -7,6 +7,12 @@ export const createDocument = async <T extends object>(collectionName: string, p
 export const readCollection = async <T>(collectionName: string) => {
   const snapshot = await getDocs(collection(db, collectionName));
   return snapshot.docs.map((row) => ({ id: row.id, ...(row.data() as T) }));
+};
+
+export const readDocument = async <T>(collectionName: string, id: string): Promise<(T & { id: string }) | null> => {
+  const snapshot = await getDoc(doc(db, collectionName, id));
+  if (!snapshot.exists()) return null;
+  return { id: snapshot.id, ...(snapshot.data() as T) };
 };
 
 export const updateDocument = (collectionName: string, id: string, payload: Record<string, unknown>) =>
