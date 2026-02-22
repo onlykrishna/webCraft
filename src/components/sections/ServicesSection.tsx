@@ -55,9 +55,11 @@ export const ServicesSection = () => {
           </span>
         </h2>
 
-        <p className="text-muted">
-          We build complete digital experiences that help businesses attract, convert, and retain customers.
-        </p>
+       <div className="section-sub-wrap">
+  <p className="section-sub mb-0">
+    We build complete digital experiences that help businesses attract, convert, and retain customers.
+  </p>
+</div>
       </div>
 
       {/* GRID */}
