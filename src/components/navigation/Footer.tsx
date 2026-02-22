@@ -2,45 +2,66 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => (
-  <footer className="bg-light py-5 mt-5">
-    <div className="container">
-      <div className="row">
-        <div className="col-md-4 mb-3">
-          <h5>WebCraft</h5>
-          <p className="text-muted">Modern web design & development for ambitious businesses.</p>
+  <footer className="wc-footer position-relative mt-5">
+
+    {/* glow */}
+    <div className="wc-footer-glow" />
+
+    <div className="container py-5">
+
+      <div className="row gy-4">
+
+        {/* BRAND */}
+        <div className="col-lg-4">
+          <h5 className="premium-logo mb-3">WebCraft</h5>
+          <p className="wc-footer-muted">
+            Modern web design & development for ambitious businesses ready to grow.
+          </p>
         </div>
-        <div className="col-md-2 mb-3">
-          <h6>Services</h6>
-          <ul className="list-unstyled">
+
+        {/* SERVICES */}
+        <div className="col-lg-2 col-md-4">
+          <h6 className="wc-footer-title">Services</h6>
+          <ul className="list-unstyled wc-footer-links">
             <li><Link to="/services">Design</Link></li>
             <li><Link to="/services">Development</Link></li>
             <li><Link to="/services">Strategy</Link></li>
           </ul>
         </div>
-        <div className="col-md-3 mb-3">
-          <h6>Company</h6>
-          <ul className="list-unstyled">
+
+        {/* COMPANY */}
+        <div className="col-lg-3 col-md-4">
+          <h6 className="wc-footer-title">Company</h6>
+          <ul className="list-unstyled wc-footer-links">
             <li><Link to="/about">About</Link></li>
             <li><Link to="/blog">Blog</Link></li>
             <li><Link to="/contact">Contact</Link></li>
           </ul>
         </div>
-        <div className="col-md-3 mb-3">
-          <h6>Follow</h6>
-          <div className="d-flex gap-2">
-            <a href="#" aria-label="twitter" className="text-muted">Twitter</a>
-            <a href="#" aria-label="linkedin" className="text-muted">LinkedIn</a>
-            <a href="#" aria-label="dribbble" className="text-muted">Dribbble</a>
+
+        {/* CTA */}
+        <div className="col-lg-3 col-md-4">
+          <h6 className="wc-footer-title">Follow</h6>
+
+          <div className="d-flex gap-3 wc-footer-links mb-3">
+            <a href="#">Twitter</a>
+            <a href="#">LinkedIn</a>
+            <a href="#">Dribbble</a>
           </div>
-          <div className="mt-3">
-            <a className="btn btn-gradient text-white" href="/contact" style={{ background: 'linear-gradient(90deg,#7c3aed,#06b6d4)' }}>Start a project</a>
-          </div>
+
+          <Link to="/contact" className="premium-cta">
+            Start a project
+          </Link>
         </div>
+
       </div>
-      <div className="text-center text-muted mt-4">© {new Date().getFullYear()} WebCraft Agency. All rights reserved.</div>
+
+      <div className="wc-footer-bottom mt-5">
+        © {new Date().getFullYear()} WebCraft Agency. All rights reserved.
+      </div>
+
     </div>
   </footer>
 );
 
 export default Footer;
-

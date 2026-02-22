@@ -1,39 +1,88 @@
 import React, { useEffect, useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useTheme } from '@/context/ThemeProvider';
+import { FiSun, FiMoon } from 'react-icons/fi';
 
 const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
-  const { toggle } = useTheme();
+  const { toggle, mode } = useTheme();
+  const location = useLocation();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => setScrolled(window.scrollY > 16);
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  return (
-    <nav className={`navbar fixed-top navbar-expand-lg glass-navbar ${scrolled ? 'shadow-sm' : ''}`} style={{ transition: 'background .3s ease, box-shadow .3s ease', padding: '1rem 0' }}>
-      <div className="container">
-        <Link className="navbar-brand fw-bold" to="/">WebCraft</Link>
+  const navLinkClass = ({ isActive }: any) =>
+    `nav-link premium-nav-link ${isActive ? 'active' : ''}`;
 
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+  return (
+    <nav
+      className={`navbar premium-navbar fixed-top navbar-expand-lg ${
+        scrolled ? 'scrolled' : ''
+      }`}
+    >
+      <div className="container">
+
+        {/* LOGO */}
+        <Link className="navbar-brand premium-logo" to="/">
+          WebCraft
+        </Link>
+
+        {/* MOBILE */}
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#nav"
+        >
           <span className="navbar-toggler-icon" />
         </button>
 
+        {/* LINKS */}
         <div className="collapse navbar-collapse" id="nav">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0 align-items-lg-center">
-            <li className="nav-item px-2"><NavLink className="nav-link" to="/">Home</NavLink></li>
-            <li className="nav-item px-2"><NavLink className="nav-link" to="/services">Services</NavLink></li>
-            <li className="nav-item px-2"><NavLink className="nav-link" to="/portfolio">Portfolio</NavLink></li>
-            <li className="nav-item px-2"><NavLink className="nav-link" to="/pricing">Pricing</NavLink></li>
-            <li className="nav-item px-2"><NavLink className="nav-link" to="/blog">Blog</NavLink></li>
+          <ul className="navbar-nav mx-auto align-items-lg-center gap-lg-2">
+
+            <li className="nav-item">
+              <NavLink to="/" className={navLinkClass}>Home</NavLink>
+            </li>
+
+            <li className="nav-item">
+              <NavLink to="/services" className={navLinkClass}>Services</NavLink>
+            </li>
+
+            <li className="nav-item">
+              <NavLink to="/portfolio" className={navLinkClass}>Portfolio</NavLink>
+            </li>
+
+            <li className="nav-item">
+              <NavLink to="/pricing" className={navLinkClass}>Pricing</NavLink>
+            </li>
+
+            <li className="nav-item">
+              <NavLink to="/blog" className={navLinkClass}>Blog</NavLink>
+            </li>
+
           </ul>
-          <div className="d-flex align-items-center">
-            <button className="btn btn-ghost me-3" onClick={toggle} aria-label="Toggle theme">Theme</button>
-            <Link to="/contact" className="btn btn-primary text-white d-flex align-items-center" style={{ background: 'var(--wc-primary-gradient)', border: 'none', padding: '0.55rem 1.05rem', borderRadius: 12 }}>
+
+          {/* RIGHT SIDE */}
+          <div className="d-flex align-items-center gap-3">
+
+            {/* THEME ICON */}
+            <button
+              onClick={toggle}
+              className="premium-theme-toggle"
+              aria-label="Toggle theme"
+            >
+              {mode === 'dark' ? <FiSun size={18} /> : <FiMoon size={18} />}
+            </button>
+
+            {/* CTA */}
+            <Link to="/contact" className="premium-cta">
               Book consultation
             </Link>
+
           </div>
         </div>
       </div>
@@ -42,4 +91,3 @@ const Navbar: React.FC = () => {
 };
 
 export default Navbar;
-
