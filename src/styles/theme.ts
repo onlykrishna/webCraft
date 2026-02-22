@@ -54,11 +54,14 @@ export const colors = {
   /* BRAND */
   primary: '#22d3ee',
   secondary: '#34d399',
+  accent: '#FF8A42',
+  accentOrange: '#FF8A42',
 
   /* GRADIENTS */
   primaryGradient: 'linear-gradient(90deg,#22d3ee,#34d399)',
   accentGradient: 'linear-gradient(120deg,#22d3ee,#3b82f6)',
   glowGradient: 'radial-gradient(circle at center,rgba(34,211,238,.25),transparent 70%)',
+  orangeGradient: 'linear-gradient(135deg,#FF8A42,#FF6B35)',
 
   /* GLASS */
   glass: 'rgba(255,255,255,.04)',

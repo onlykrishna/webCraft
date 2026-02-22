@@ -3,38 +3,26 @@ import Card from '@/ui/Card';
 import { FaPaintBrush, FaRocket, FaSearch, FaTools } from 'react-icons/fa';
 
 const ServiceCard = ({ icon, title, desc, accent }: any) => (
-  <Card className="p-4 h-100 position-relative">
+  <Card className="service-card-premium p-4 h-100 position-relative">
 
     {/* Icon */}
     <div
-      className="d-inline-flex align-items-center justify-content-center mb-3"
-      style={{
-        width: 56,
-        height: 56,
-        borderRadius: 18,
-        background: accent,
-        color: '#fff',
-        fontSize: 20,
-      }}
+      className="service-icon-premium mb-3"
+      style={{ background: accent }}
     >
       {icon}
     </div>
 
     {/* Title */}
-    <h5 className="fw-semibold mb-2">{title}</h5>
+    <h5 className="service-title-premium mb-2">{title}</h5>
 
     {/* Description */}
-    <p className="text-muted mb-0">{desc}</p>
+    <p className="service-desc-premium mb-0">{desc}</p>
 
     {/* Accent underline */}
     <div
-      className="position-absolute bottom-0 start-0 w-100"
-      style={{
-        height: 3,
-        borderRadius: 3,
-        background: accent,
-        opacity: 0.4,
-      }}
+      className="service-underline"
+      style={{ background: accent }}
     />
 
   </Card>

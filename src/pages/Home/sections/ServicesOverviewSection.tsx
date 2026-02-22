@@ -27,10 +27,12 @@ export const ServicesOverviewSection: React.FC = () => {
           <span className="section-gradient"> Grow Online</span>
         </h2>
 
-        <p className="section-sub">
-          We build complete digital experiences that help businesses attract,
-          convert, and retain customers.
-        </p>
+        <div className="section-sub-wrap">
+  <p className="section-sub mb-0">
+    We build complete digital experiences that help businesses attract,
+    convert, and retain customers.
+  </p>
+</div>
       </div>
 
       {/* GRID */}
