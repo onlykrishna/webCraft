@@ -9,4 +9,4 @@ export const LeadMagnetSection = () => (
       <Button>Get the checklist</Button>
     </div>
   </SectionWrapper>
-);
+);export default LeadMagnetSection;

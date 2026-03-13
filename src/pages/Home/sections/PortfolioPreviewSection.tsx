@@ -27,4 +27,4 @@ export const PortfolioPreviewSection = () => {
       </div>
     </SectionWrapper>
   );
-};
+};export default PortfolioPreviewSection;

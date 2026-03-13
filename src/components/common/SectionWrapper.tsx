@@ -1,8 +1,8 @@
 import { PropsWithChildren, useEffect, useRef, useState } from 'react';
 
-type Props = PropsWithChildren & { maxWidth?: number; padding?: 'sm' | 'md' | 'lg' };
+type Props = PropsWithChildren & { maxWidth?: number; padding?: 'sm' | 'md' | 'lg' | 'none'; className?: string };
 
-export const SectionWrapper = ({ children, maxWidth = 1100, padding = 'lg' }: Props) => {
+export const SectionWrapper = ({ children, maxWidth = 1100, padding = 'lg', className = '' }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
   useEffect(() => {
@@ -12,10 +12,10 @@ export const SectionWrapper = ({ children, maxWidth = 1100, padding = 'lg' }: Pr
   }, []);
   const pad = padding === 'sm' ? 'py-3' : padding === 'md' ? 'py-4' : 'py-5';
   return (
-    <section className={pad}>
+    <section className={`${pad} ${className}`.trim()}>
       <div ref={ref} style={{ maxWidth, margin: '0 auto', opacity: visible ? 1 : 0, transform: visible ? 'none' : 'translateY(12px)', transition: 'opacity 400ms ease, transform 400ms ease' }}>
         {children}
       </div>
     </section>
   );
-};
+};export default SectionWrapper;

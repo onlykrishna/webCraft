@@ -21,4 +21,4 @@ export const Button = ({ children, variant = 'primary', className = '', ...rest 
       {children}
     </button>
   );
-};
+};export default Button;
