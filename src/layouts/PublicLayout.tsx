@@ -1,13 +1,8 @@
 import { Outlet } from 'react-router-dom';
-import { Footer } from '@/components/navigation/Footer';
-import { Navbar } from '@/components/navigation/Navbar';
+import { MainLayout } from '@/layouts/MainLayout';
 
 export const PublicLayout = () => (
-  <>
-    <Navbar />
-    <main className="container py-4">
-      <Outlet />
-    </main>
-    <Footer />
-  </>
+  <MainLayout>
+    <Outlet />
+  </MainLayout>
 );
